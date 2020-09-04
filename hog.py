@@ -45,16 +45,8 @@ def free_bacon(score):
 
     # Trim pi to only (score + 1) digit(s)
     # BEGIN PROBLEM 2
-    if score == 0:
-        return 3 + 3
-    upper = pow(10, score + 1)
-    lower = pow(10, score)
-    while not(upper > pi and pi > lower):  
-        pi //= 10
+    return (pi // pow(10, 100 - score)) % 10 + 3
     # END PROBLEM 2
-
-    return pi % 10 + 3
-
 
 def take_turn(num_rolls, opponent_score, dice=six_sided):
     """Simulate a turn rolling NUM_ROLLS dice, which may be 0 (Free Bacon).
