@@ -70,6 +70,12 @@ def take_turn(num_rolls, opponent_score, dice=six_sided):
 
 def extra_turn(player_score, opponent_score):
     """Return whether the player gets an extra turn."""
+
+    if pig_pass(player_score, opponent_score):
+        print("DEBUG: pig_pass true")
+    elif swine_align(player_score, opponent_score):
+        print("DEBUG: swine_align true")
+
     return (pig_pass(player_score, opponent_score) or
             swine_align(player_score, opponent_score))
 
@@ -177,21 +183,12 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
         roll1 = strategy1(score1, score0)
         if who == 0:
             score0 += take_turn(roll0, score1, dice)
-            #print("DEBUG: take turn 0")
-            while extra_turn(score0, score1):
-                score0 += take_turn(roll0, score1, dice)
-                print("DEBUG: turn extra turn 0")
+            if not extra_turn(score0, score1):
+                who = other(who)
         else:
             score1 += take_turn(roll1, score0, dice)
-            #print("DEBUG: take turn 1")
-            while extra_turn(score1, score0):
-                score1 += take_turn(roll1, score0, dice)
-                #print(take_turn(roll1, score0, dice))
-                #print("DEBUG: turn extra turn 1")
-        who = other(who)
-        #print("DEBUG: who:", who)
-        #print("DEBUG: score 0:", score0)
-        #print("DEBUG: score 1:", score1)
+            if not extra_turn(score1, score0):
+                who = other(who)
 
     return score0, score1
 
