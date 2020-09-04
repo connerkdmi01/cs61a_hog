@@ -171,20 +171,28 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     """
     who = 0  # Who is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
-    
+
     while(score0 < goal and score1 < goal):
         roll0 = strategy0(score0, score1)
         roll1 = strategy1(score1, score0)
         if who == 0:
-            take_turn(roll0, score1, dice)
+            score0 += take_turn(roll0, score1, dice)
+            #print("DEBUG: take turn 0")
             while extra_turn(score0, score1):
                 score0 += take_turn(roll0, score1, dice)
+                print("DEBUG: turn extra turn 0")
         else:
-            take_turn(roll1, score0, dice)
+            score1 += take_turn(roll1, score0, dice)
+            #print("DEBUG: take turn 1")
             while extra_turn(score1, score0):
                 score1 += take_turn(roll1, score0, dice)
-        who = other
-    
+                #print(take_turn(roll1, score0, dice))
+                #print("DEBUG: turn extra turn 1")
+        who = other(who)
+        #print("DEBUG: who:", who)
+        #print("DEBUG: score 0:", score0)
+        #print("DEBUG: score 1:", score1)
+
     return score0, score1
 
     # END PROBLEM 5
