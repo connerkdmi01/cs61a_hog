@@ -162,13 +162,13 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     # BEGIN PROBLEM 5
 
     while(score0 < goal and score1 < goal):
-        roll0 = strategy0(score0, score1)
-        roll1 = strategy1(score1, score0)
         if who == 0:
+            roll0 = strategy0(score0, score1)
             score0 += take_turn(roll0, score1, dice)
             if not extra_turn(score0, score1):
                 who = other(who)
         else:
+            roll1 = strategy1(score1, score0)
             score1 += take_turn(roll1, score0, dice)
             if not extra_turn(score1, score0):
                 who = other(who)
