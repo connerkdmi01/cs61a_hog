@@ -3,6 +3,7 @@
 from dice import six_sided, four_sided, make_test_dice
 from ucb import main, trace, interact
 
+
 GOAL_SCORE = 100  # The goal of Hog is to score 100 points.
 FIRST_101_DIGITS_OF_PI = 31415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
 
@@ -23,7 +24,7 @@ def roll_dice(num_rolls, dice=six_sided):
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
     sum = 0
-    flag = False  
+    flag = False
     for i in range(num_rolls):
         roll = dice()
         if roll == 1:
@@ -102,7 +103,6 @@ def swine_align(player_score, opponent_score):
     # END PROBLEM 4a
 
 
-
 def pig_pass(player_score, opponent_score):
     """Return whether the player gets an extra turn due to Pig Pass.
 
@@ -122,8 +122,7 @@ def pig_pass(player_score, opponent_score):
     """
     # BEGIN PROBLEM 4b
     dif = opponent_score - player_score
-    return dif > 0 and dif < 3 
-
+    return dif > 0 and dif < 3
     # END PROBLEM 4b
 
 
