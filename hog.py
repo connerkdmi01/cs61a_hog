@@ -121,8 +121,7 @@ def pig_pass(player_score, opponent_score):
     False
     """
     # BEGIN PROBLEM 4b
-    dif = opponent_score - player_score
-    return dif > 0 and dif < 3
+    return opponent_score > player_score and abs(opponent_score - player_score) < 3
     # END PROBLEM 4b
 
 
