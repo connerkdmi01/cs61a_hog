@@ -92,28 +92,13 @@ def swine_align(player_score, opponent_score):
     False
     """
     # BEGIN PROBLEM 4a
-    gcd = 1
-    big, small = 0, 0
+    def gcd(a, b):
+        while y != 0:
+            x, y = y, x % y
+        return x
 
-    # Find which score is bigger
-    if player_score == 0 or opponent_score == 0:
-        return False
-    elif player_score >= opponent_score:
-        big, small = player_score, opponent_score
-    else:
-        big, small = opponent_score, player_score
-
-    # Find GCD
-    if big % small == 0:
-        gcd = small
-
-    for i in range(small, 0, -1):
-        if big % i == 0 and small % i == 0:
-            gcd = i
-            break
-
-    return gcd >= 10
-
+    return player_score > 0 and opponent_score > 0 and \
+        gcd(player_score) % 10 == 0 and gcd(opponent_score) % 10 == 0
     # END PROBLEM 4a
 
 
