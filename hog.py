@@ -94,12 +94,12 @@ def swine_align(player_score, opponent_score):
     """
     # BEGIN PROBLEM 4a
     def gcd(a, b):
-        while y != 0:
-            x, y = y, x % y
-        return x
+        while b != 0:
+            a, b = b, a % b
+        return a
 
     return player_score > 0 and opponent_score > 0 and \
-        gcd(player_score) % 10 == 0 and gcd(opponent_score) % 10 == 0
+        gcd(player_score, opponent_score) >= 10
     # END PROBLEM 4a
 
 
