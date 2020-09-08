@@ -413,7 +413,7 @@ def final_strategy(score, opponent_score):
     *** YOUR DESCRIPTION HERE ***
     """
     # BEGIN PROBLEM 12
-    return 6  # Replace this statement
+    return extra_turn_strategy(score, opponent_score, cutoff=14, num_rolls=4)
     # END PROBLEM 12
 
 ##########################
