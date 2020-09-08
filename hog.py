@@ -72,10 +72,10 @@ def take_turn(num_rolls, opponent_score, dice=six_sided):
 def extra_turn(player_score, opponent_score):
     """Return whether the player gets an extra turn."""
 
-    if pig_pass(player_score, opponent_score):
-        print("DEBUG: pig_pass true")
-    elif swine_align(player_score, opponent_score):
-        print("DEBUG: swine_align true")
+    # if pig_pass(player_score, opponent_score):
+    #     print("DEBUG: pig_pass true")
+    # elif swine_align(player_score, opponent_score):
+    #     print("DEBUG: swine_align true")
 
     return (pig_pass(player_score, opponent_score) or
             swine_align(player_score, opponent_score))
