@@ -23,8 +23,7 @@ def roll_dice(num_rolls, dice=six_sided):
     assert type(num_rolls) == int, 'num_rolls must be an integer.'
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
-    sum = 0
-    flag = False
+    sum, flag = 0, False
     for i in range(num_rolls):
         roll = dice()
         if roll == 1:
@@ -160,7 +159,7 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     """
     who = 0  # Who is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
-    while(score0 < goal and score1 < goal):
+    while score0 < goal and score1 < goal:
         if who == 0:
             roll0 = strategy0(score0, score1)
             score0 += take_turn(roll0, score1, dice)
@@ -331,8 +330,7 @@ def max_scoring_num_rolls(dice=six_sided, trials_count=1000):
     """
     # BEGIN PROBLEM 9
     test = make_averaged(roll_dice, trials_count)
-    max_score = -1
-    max_scoring_dice = -1
+    max_score = max_scoring_dice = -1
     for i in range(10, 0, -1):
         average = test(i, dice)
         if average > max_score:
